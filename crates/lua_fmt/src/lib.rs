@@ -75,36 +75,37 @@ impl From<LuaConfig> for StyluaConfig {
         let mut config = StyluaConfig::default();
 
         if let Some(indent_style) = val.layout.indent_style {
-            config = config.with_indent_type(indent_style.into());
+            config.indent_type = indent_style.into();
         }
 
         if let Some(indent_width) = val.layout.indent_width {
-            config = config.with_indent_width(indent_width as usize);
+            config.indent_width = indent_width as usize;
         }
 
         if let Some(line_width) = val.layout.line_width {
-            config = config.with_column_width(line_width as usize);
+            config.column_width = line_width as usize;
         }
 
         if let Some(line_ending) = val.layout.line_ending {
-            config = config.with_line_endings(line_ending.into());
+            config.line_endings = line_ending.into();
         }
 
         if let Some(quote_style) = val.quote_style {
-            config = config.with_quote_style(quote_style);
+            config.quote_style = quote_style;
         }
 
         if let Some(call_parentheses) = val.call_parentheses {
-            config = config.with_call_parentheses(call_parentheses);
+            config.call_parentheses = call_parentheses;
         }
 
         if let Some(collapse_simple_statement) = val.collapse_simple_statement {
-            config = config.with_collapse_simple_statement(collapse_simple_statement);
+            config.collapse_simple_statement = collapse_simple_statement;
         }
 
         if let Some(enabled) = val.sort_requires {
-            let sort_requires = SortRequiresConfig::default().set_enabled(enabled);
-            config = config.with_sort_requires(sort_requires);
+            let mut sort_requires = SortRequiresConfig::default();
+            sort_requires.enabled = enabled;
+            config.sort_requires = sort_requires;
         }
 
         config
