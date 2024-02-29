@@ -1,0 +1,28 @@
+[workspace]
+members  = ["crates/*"]
+resolver = "2"
+
+
+    [workspace.package]
+    authors     = ["magic-akari <akari.ccino@gmail.com>"]
+    description = "A wasm based lua formatter"
+    edition     = "2021"
+    homepage    = "https://github.com/wasm-fmt/lua_fmt"
+    keywords    = ["wasm", "stylua", "lua", "formatter"]
+    license     = "MIT"
+    readme      = "README.md"
+    repository  = "https://github.com/wasm-fmt/lua_fmt"
+    version     = "0.0.0"
+
+
+    [workspace.dependencies]
+    serde              = "1.0"
+    serde-wasm-bindgen = "0.6"
+    serde_json         = "1.0"
+    wasm-bindgen       = "0.2.91"
+
+    stylua = { version = "0.18.2", default_features = false }
+
+[profile.release]
+lto       = true
+opt-level = "s"
