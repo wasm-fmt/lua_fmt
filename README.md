@@ -26,3 +26,9 @@ import init, { format } from "@wasm-fmt/lua_fmt/vite";
 
 // ...
 ```
+
+# Credits
+
+Thanks to:
+
+- The [StyLua](https://github.com/JohnnyMorganz/StyLua) project created by [@JohnnyMorganz](https://github.com/JohnnyMorganz)

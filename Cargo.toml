@@ -5,7 +5,7 @@ resolver = "2"
 
     [workspace.package]
     authors     = ["magic-akari <akari.ccino@gmail.com>"]
-    description = "A wasm based lua formatter"
+    description = "A WASM based Lua Formatter"
     edition     = "2021"
     homepage    = "https://github.com/wasm-fmt/lua_fmt"
     keywords    = ["wasm", "stylua", "lua", "formatter"]
