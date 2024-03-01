@@ -21,14 +21,14 @@ for await (const entry of walk(test_root, {
 	const input = Deno.readTextFileSync(entry.path);
 
 	if (update) {
-		const actual = format(input);
+		const actual = format(input, entry.path);
 		Deno.writeTextFileSync(entry.path + ".snap", actual);
 	} else {
 		const test_name = relative(test_root.pathname, entry.path);
 		const expected = Deno.readTextFileSync(entry.path + ".snap");
 
 		Deno.test(test_name, () => {
-			const actual = format(input);
+			const actual = format(input, entry.path);
 			assertEquals(actual, expected);
 		});
 	}

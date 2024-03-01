@@ -36,7 +36,7 @@ for await (const dirent of await fs.opendir(test_root, { recursive: true })) {
 	]);
 
 	test(test_name, () => {
-		const actual = format(input);
+        const actual = format(input, input_path);
 		assert.equal(actual, expected);
 	});
 }
