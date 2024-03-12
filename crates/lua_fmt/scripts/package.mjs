@@ -22,7 +22,7 @@ pkg_json.exports = {
 	},
 	"./vite": {
 		types: "./lua_fmt.d.ts",
-		default: "./vite.js",
+		default: "./lua_fmt_vite.js",
 	},
 	"./package.json": "./package.json",
 	"./*": "./*",
