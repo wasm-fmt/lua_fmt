@@ -15,7 +15,7 @@ await init();
 
 const input = `print "Hello World"`;
 
-const formatted = format(input);
+const formatted = format(input, "main.lua");
 console.log(formatted);
 ```
 
