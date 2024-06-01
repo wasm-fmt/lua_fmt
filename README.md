@@ -2,13 +2,13 @@
 
 # Install
 
-[![npm](https://img.shields.io/npm/v/@wasm-fmt/lua_fmt)](https://www.npmjs.com/package/@wasm-fmt/lua_fmt)
+[![npm](https://img.shields.io/npm/v/@wasm-fmt/lua_fmt?color=000080)](https://www.npmjs.com/package/@wasm-fmt/lua_fmt)
 
 ```bash
 npm install @wasm-fmt/lua_fmt
 ```
 
-[![jsr.io](https://jsr.io/badges/@fmt/lua-fmt)](https://jsr.io/@fmt/lua-fmt)
+[![jsr.io](https://jsr.io/badges/@fmt/lua-fmt?color=000080)](https://jsr.io/@fmt/lua-fmt)
 
 ```bash
 npx jsr add @fmt/lua-fmt
