@@ -29,6 +29,18 @@ console.log(formatted);
 
 For Vite users:
 
+Add `"@wasm-fmt/lua_fmt"` to `optimizeDeps.exclude` in your vite config:
+
+```JSON
+{
+    "optimizeDeps": {
+        "exclude": ["@wasm-fmt/lua_fmt"]
+    }
+}
+```
+
+Or use another import entry:
+
 ```JavaScript
 import init, { format } from "@wasm-fmt/lua_fmt/vite";
 
