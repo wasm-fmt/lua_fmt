@@ -374,7 +374,7 @@ dependencies = [
 
 [[package]]
 name = "lua_fmt"
-version = "0.0.4"
+version = "0.0.5"
 dependencies = [
  "serde",
  "serde-wasm-bindgen",
