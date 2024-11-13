@@ -39,13 +39,19 @@ Add `"@wasm-fmt/lua_fmt"` to `optimizeDeps.exclude` in your vite config:
 }
 ```
 
-Or use another import entry:
+<details>
+<summary>
+If you cannot change the vite config, you can use another import entry
+
+</summary>
 
 ```JavaScript
 import init, { format } from "@wasm-fmt/lua_fmt/vite";
 
 // ...
 ```
+
+</details>
 
 # Credits
 
