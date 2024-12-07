@@ -355,7 +355,7 @@ checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 
 [[package]]
 name = "lua_fmt"
-version = "0.0.6"
+version = "0.0.5"
 dependencies = [
  "serde",
  "serde-wasm-bindgen",
@@ -564,9 +564,9 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 
 [[package]]
 name = "stylua"
-version = "2.0.1"
+version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89bfddd2c08df07a1857c8126358c92b9c8499778fdc875364a5d1f1aefabc31"
+checksum = "58c31c25dd76d1830e698ebfde219c105890504da85eb53acb7d446682712359"
 dependencies = [
  "anyhow",
  "cfg-if",
