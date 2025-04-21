@@ -137,9 +137,9 @@ dependencies = [
 
 [[package]]
 name = "crossbeam-channel"
-version = "0.5.13"
+version = "0.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "33480d6946193aa8033910124896ca395333cae7e2d1113d1fef6c3272217df2"
+checksum = "82b8f8f868b36967f9606790d1903570de9ceaf870a7bf9fbbd3016d636a2cb2"
 dependencies = [
  "crossbeam-utils",
 ]
@@ -213,9 +213,9 @@ checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
 
 [[package]]
 name = "full_moon"
-version = "1.1.2"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4c7dafc2cbadd914f7019a08395a3a29c5d735cb6762751c5669e48c5ff2c775"
+checksum = "7e5544e0a9eb14156c6bdc12bfd3bdc35bef1a927e7376eb17626e5d8baec3a3"
 dependencies = [
  "bytecount",
  "cfg-if",
@@ -564,9 +564,9 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 
 [[package]]
 name = "stylua"
-version = "2.0.2"
+version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "58c31c25dd76d1830e698ebfde219c105890504da85eb53acb7d446682712359"
+checksum = "3d7adc04a32d2a3ead9cb7b993a422a851cb135028d792f6b4ff9543ba642800"
 dependencies = [
  "anyhow",
  "cfg-if",
