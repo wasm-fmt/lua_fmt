@@ -37,7 +37,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: build
           path: crates/lua_fmt/pkg/
@@ -62,7 +62,7 @@ jobs:
     needs: wasm-build
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: build
           path: crates/lua_fmt/pkg/
@@ -84,7 +84,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: build
           path: crates/lua_fmt/pkg/
@@ -108,7 +108,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: build
           path: crates/lua_fmt/pkg/
