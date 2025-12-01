@@ -42,7 +42,7 @@ jobs:
           name: build
           path: crates/lua_fmt/pkg/
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".node-version"
           registry-url: "https://registry.npmjs.org"
@@ -67,7 +67,7 @@ jobs:
           name: build
           path: crates/lua_fmt/pkg/
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".node-version"
           registry-url: "https://registry.npmjs.org"
@@ -89,7 +89,7 @@ jobs:
           name: build
           path: crates/lua_fmt/pkg/
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".node-version"
           registry-url: "https://npm.pkg.github.com"
