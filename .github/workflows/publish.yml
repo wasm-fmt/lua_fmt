@@ -50,8 +50,6 @@ jobs:
       - name: Publish
         working-directory: crates/lua_fmt/pkg
         run: npm publish --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-jsr:
     if: startsWith(github.ref, 'refs/tags/v')
