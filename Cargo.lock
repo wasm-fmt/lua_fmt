@@ -543,6 +543,7 @@ version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1de1d4f81173b03af4c0cbed3c898f6bff5b870e4a7f5d6f4057d62a7a4b686e"
 dependencies = [
+ "bstr",
  "serde",
 ]
 
@@ -564,9 +565,9 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 
 [[package]]
 name = "stylua"
-version = "2.1.0"
+version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d7adc04a32d2a3ead9cb7b993a422a851cb135028d792f6b4ff9543ba642800"
+checksum = "9bc8bced01d9eed87b595290bd6e1767691404d7607c6fca001453a032ce8eb6"
 dependencies = [
  "anyhow",
  "cfg-if",
