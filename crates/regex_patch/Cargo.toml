@@ -1,0 +1,26 @@
+[package]
+name = "regex"
+version = "1.11.0"
+edition = "2021"
+
+[dependencies]
+regex-lite = "0.1"
+
+[features]
+default = ["std"]
+std = []
+perf = []
+perf-backtrack = []
+perf-cache = []
+perf-dfa = []
+perf-inline = []
+perf-literal = []
+perf-onepass = []
+unicode = []
+unicode-age = []
+unicode-bool = []
+unicode-case = []
+unicode-gencat = []
+unicode-perl = []
+unicode-script = []
+unicode-segment = []

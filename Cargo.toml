@@ -23,6 +23,9 @@ resolver = "2"
 
     stylua = { version = "2.0.0", default-features = false }
 
+[patch.crates-io]
+regex = { path = "crates/regex_patch" }
+
 [profile.release]
 codegen-units = 1
 debug         = false     # set to `true` for debug information
