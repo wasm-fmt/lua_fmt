@@ -16,8 +16,23 @@ npx jsr add @fmt/lua-fmt
 
 # Usage
 
+## Node.js / Deno / Bun / Bundler
+
 ```javascript
-import init, { format } from "@wasm-fmt/lua_fmt";
+import { format } from "@wasm-fmt/lua_fmt";
+
+const input = `print "Hello World"`;
+
+const formatted = format(input, "main.lua");
+console.log(formatted);
+```
+
+## Web
+
+For web environments, you need to initialize WASM module manually:
+
+```javascript
+import init, { format } from "@wasm-fmt/lua_fmt/web";
 
 await init();
 
@@ -27,34 +42,26 @@ const formatted = format(input, "main.lua");
 console.log(formatted);
 ```
 
-For Vite users:
-
-Add `"@wasm-fmt/lua_fmt"` to `optimizeDeps.exclude` in your vite config:
-
-```JSON
-{
-    "optimizeDeps": {
-        "exclude": ["@wasm-fmt/lua_fmt"]
-    }
-}
-```
-
-<details>
-<summary>
-If you cannot change the vite config, you can use another import entry
-
-</summary>
+### Vite
 
 ```JavaScript
 import init, { format } from "@wasm-fmt/lua_fmt/vite";
 
+await init();
 // ...
 ```
 
-</details>
+## Entry Points
+
+- `.` - Auto-detects environment (Node.js uses node, Webpack uses bundler, default is ESM)
+- `./node` - Node.js environment (no init required)
+- `./esm` - ESM environments like Deno (no init required)
+- `./bundler` - Bundlers like Webpack (no init required)
+- `./web` - Web browsers (requires manual init)
+- `./vite` - Vite bundler (requires manual init)
 
 # Credits
 
 Thanks to:
 
--   The [StyLua](https://github.com/JohnnyMorganz/StyLua) project created by [@JohnnyMorganz](https://github.com/JohnnyMorganz)
+- The [StyLua](https://github.com/JohnnyMorganz/StyLua) project created by [@JohnnyMorganz](https://github.com/JohnnyMorganz)

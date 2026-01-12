@@ -1,35 +1,26 @@
-import init, { format } from "../pkg/lua_fmt.js";
+#!/usr/bin/env deno test --allow-read --parallel
+import { assertEquals } from "jsr:@std/assert@1.0.16";
+import { expandGlob } from "jsr:@std/fs@1.0.21";
+import { fromFileUrl, relative } from "jsr:@std/path@1.1.4";
 
-import { assertEquals } from "https://deno.land/std@0.217.0/assert/mod.ts";
-import { walk } from "https://deno.land/std@0.217.0/fs/walk.ts";
-import { relative } from "https://deno.land/std@0.217.0/path/mod.ts";
+import { format } from "../pkg/lua_fmt.js";
 
-await init();
+const test_root = fromFileUrl(import.meta.resolve("../test_data"));
 
-const update = Deno.args.includes("--update");
+for await (const { path: input_path, name } of expandGlob("**/*.lua", { root: test_root })) {
+	const case_name = relative(test_root, input_path);
 
-const test_root = new URL("../test_data", import.meta.url);
-
-for await (const entry of walk(test_root, {
-	includeDirs: false,
-	exts: ["lua"],
-})) {
-	if (entry.name.startsWith(".")) {
+	if (name.startsWith(".")) {
+		Deno.test.ignore(case_name, () => {});
 		continue;
 	}
 
-	const input = Deno.readTextFileSync(entry.path);
+	const expect_path = input_path + ".snap";
 
-	if (update) {
-		const actual = format(input, entry.path);
-		Deno.writeTextFileSync(entry.path + ".snap", actual);
-	} else {
-		const test_name = relative(test_root.pathname, entry.path);
-		const expected = Deno.readTextFileSync(entry.path + ".snap");
+	const [input, expected] = await Promise.all([Deno.readTextFile(input_path), Deno.readTextFile(expect_path)]);
 
-		Deno.test(test_name, () => {
-			const actual = format(input, entry.path);
-			assertEquals(actual, expected);
-		});
-	}
+	Deno.test(case_name, () => {
+		const actual = format(input, input_path);
+		assertEquals(actual, expected);
+	});
 }

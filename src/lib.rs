@@ -5,8 +5,13 @@ use stylua_lib::{
 };
 use wasm_bindgen::prelude::wasm_bindgen;
 
+/// Formats the given Lua code according to the provided configuration.
 #[wasm_bindgen]
-pub fn format(input: &str, filename: &str, config: Option<Config>) -> Result<String, String> {
+pub fn format(
+    #[wasm_bindgen(param_description = "Lua code to format")] input: &str,
+    filename: &str,
+    #[wasm_bindgen(param_description = "Configuration for formatting")] config: Option<Config>,
+) -> Result<String, String> {
     let _ = filename;
 
     let config = config
@@ -20,21 +25,9 @@ pub fn format(input: &str, filename: &str, config: Option<Config>) -> Result<Str
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_Config: &'static str = r#"
-interface LayoutConfig {
-	indent_style?: "tab" | "space";
-	indent_width?: number;
-	line_width?: number;
-	line_ending?: "lf" | "crlf";
-}"#;
-
-#[wasm_bindgen(typescript_custom_section)]
-const TS_Config: &'static str = r#"
-export interface Config extends LayoutConfig {
-	quote_style?: "AutoPreferDouble" | "AutoPreferSingle" | "ForceDouble" | "ForceSingle";
-	call_parentheses?: "Always" | "NoSingleString" | "NoSingleTable" | "None" | "Input";
-	collapse_simple_statement?: | "Never" | "FunctionOnly" | "ConditionalOnly" | "Always";
-	sort_requires?: boolean;
-}"#;
+import type { Config } from "./lua_fmt_config.d.ts";
+export type { Config, LayoutConfig } from "./lua_fmt_config.d.ts";
+"#;
 
 #[wasm_bindgen]
 extern "C" {
@@ -105,9 +98,7 @@ impl From<LuaConfig> for StyluaConfig {
         }
 
         if let Some(enabled) = val.sort_requires {
-            let mut sort_requires = SortRequiresConfig::default();
-            sort_requires.enabled = enabled;
-            config.sort_requires = sort_requires;
+            config.sort_requires = SortRequiresConfig { enabled };
         }
 
         config
