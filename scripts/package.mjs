@@ -18,7 +18,9 @@ pkg_json.exports = {
 	".": {
 		types: "./lua_fmt.d.ts",
 		webpack: "./lua_fmt.js",
-		node: "./lua_fmt_node.js",
+		deno: "./lua_fmt.js",
+		// CJS supports
+		"module-sync": "./lua_fmt_node.js",
 		default: "./lua_fmt_esm.js",
 	},
 	"./esm": {
@@ -53,7 +55,7 @@ fs.writeFileSync(pkg_path, JSON.stringify(pkg_json, null, "\t"));
 const jsr_path = path.resolve(pkg_path, "..", "jsr.jsonc");
 pkg_json.name = "@fmt/lua-fmt";
 pkg_json.exports = {
-	".": "./lua_fmt_bg.wasm",
+	".": "./lua_fmt.js",
 	"./esm": "./lua_fmt_esm.js",
 	"./node": "./lua_fmt_node.js",
 	"./bundler": "./lua_fmt.js",

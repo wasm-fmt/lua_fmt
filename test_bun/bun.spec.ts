@@ -1,3 +1,4 @@
+#!/usr/bin/env bun test
 import { Glob } from "bun";
 import { expect, test } from "bun:test";
 

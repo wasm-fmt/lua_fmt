@@ -3,7 +3,7 @@ import { assertEquals } from "jsr:@std/assert@1.0.16";
 import { expandGlob } from "jsr:@std/fs@1.0.21";
 import { fromFileUrl, relative } from "jsr:@std/path@1.1.4";
 
-import { format } from "../pkg/lua_fmt.js";
+import { format } from "../pkg/lua_fmt_esm.js";
 
 const test_root = fromFileUrl(import.meta.resolve("../test_data"));
 

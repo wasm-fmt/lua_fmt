@@ -1,5 +1,4 @@
-/** Layout configuration for code formatting, including indentation, line width, and line endings */
-export interface LayoutConfig {
+interface LayoutConfig {
 	/** The type of indents to use when indenting */
 	indent_style?: "tab" | "space";
 	/** The width of a single indentation level. If `indent_style` is set to `"space"`, then this is the number of spaces to use. If `indent_style` is set to `"tab"`, then this is used as a heuristic to guide when to wrap lines. */
@@ -10,7 +9,7 @@ export interface LayoutConfig {
 	line_ending?: "lf" | "crlf";
 }
 
-/** The configuration to use when formatting. Extends LayoutConfig with additional formatting options */
+/** Configuration for the Lua formatter */
 export interface Config extends LayoutConfig {
 	/** The style of quotes to use within string literals. "AutoPreferDouble" uses double quotes where possible, but changes to single quotes if it produces less escapes. "AutoPreferSingle" uses single quotes where possible, but changes to double quotes if it produces less escapes. "ForceDouble" always uses double quotes in all strings. "ForceSingle" always uses single quotes in all strings. */
 	quote_style?: "AutoPreferDouble" | "AutoPreferSingle" | "ForceDouble" | "ForceSingle";
