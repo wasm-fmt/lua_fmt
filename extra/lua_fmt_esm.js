@@ -3,7 +3,7 @@
 import source wasmModule from "./lua_fmt_bg.wasm";
 
 import * as import_bg from "./lua_fmt_bg.js";
-const { __wbg_set_wasm, format, ...wasmImport } = import_bg;
+const { __wbg_set_wasm, format, format_range, ...wasmImport } = import_bg;
 
 function getImports() {
 	return {
@@ -24,4 +24,4 @@ const instance = new WebAssembly.Instance(wasmModule, getImports());
 const wasm = instance.exports;
 __wbg_set_wasm(wasm);
 
-export { format } from "./lua_fmt_bg.js";
+export { format, format_range };

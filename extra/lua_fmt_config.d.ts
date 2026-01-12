@@ -24,3 +24,15 @@ export interface Config extends LayoutConfig {
 	/** See {@link https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#options} */
 	[key: string]: unknown;
 }
+
+/**
+ * An optional formatting range.
+ * If provided, only content within these boundaries (inclusive) will be formatted.
+ * Both boundaries are optional, and are given as byte offsets from the beginning of the file (0-indexed).
+ */
+export interface Range {
+	/** The starting byte offset (inclusive) */
+	start?: number;
+	/** The ending byte offset (inclusive) */
+	end?: number;
+}

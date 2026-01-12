@@ -1,6 +1,6 @@
 /* @ts-self-types="./lua_fmt_web.d.ts" */
 import * as import_bg from "./lua_fmt_bg.js";
-const { __wbg_set_wasm, format, ...wasmImport } = import_bg;
+const { __wbg_set_wasm, format, format_range, ...wasmImport } = import_bg;
 
 function getImports() {
 	return {
@@ -98,4 +98,4 @@ export default async function initAsync(init_input) {
 	return finalize_init(instance, module);
 }
 
-export { format };
+export { format, format_range };

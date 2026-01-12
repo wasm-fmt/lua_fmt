@@ -1,7 +1,7 @@
 /* @ts-self-types="./lua_fmt.d.ts" */
 import { readFileSync } from "node:fs";
 import * as import_bg from "./lua_fmt_bg.js";
-const { __wbg_set_wasm, format, ...wasmImport } = import_bg;
+const { __wbg_set_wasm, format, format_range, ...wasmImport } = import_bg;
 
 const wasmUrl = new URL("lua_fmt_bg.wasm", import.meta.url);
 const wasmBytes = readFileSync(wasmUrl);
@@ -26,4 +26,4 @@ const instance = new WebAssembly.Instance(wasmModule, getImports());
 const wasm = instance.exports;
 __wbg_set_wasm(wasm);
 
-export { format };
+export { format, format_range };

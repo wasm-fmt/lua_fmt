@@ -1,7 +1,7 @@
 /* @ts-self-types="./lua_fmt_web.d.ts" */
 import init from "./lua_fmt_bg.wasm?init";
 import * as import_bg from "./lua_fmt_bg.js";
-const { __wbg_set_wasm, format, ...wasmImport } = import_bg;
+const { __wbg_set_wasm, format, format_range, ...wasmImport } = import_bg;
 
 let wasm, wasmModule;
 
@@ -35,4 +35,4 @@ export function initSync(module) {
 	return finalize_init(instance, module);
 }
 
-export { format };
+export { format, format_range };

@@ -20,16 +20,39 @@ pub fn format(
     format_code(input, config.into(), None, OutputVerification::None).map_err(|e| e.to_string())
 }
 
+/// Formats a specific range of Lua code.
+#[wasm_bindgen]
+pub fn format_range(
+    #[wasm_bindgen(param_description = "Lua code to format")] input: &str,
+    #[wasm_bindgen(param_description = "Byte offset range")] range: Range,
+    #[wasm_bindgen(param_description = "Configuration for formatting")] config: Option<Config>,
+) -> Result<String, String> {
+    let config = config
+        .map(|x| serde_wasm_bindgen::from_value::<LuaConfig>(x.clone()))
+        .transpose()
+        .map_err(|op| op.to_string())?
+        .unwrap_or_default();
+
+    let stylua_range = serde_wasm_bindgen::from_value::<stylua_lib::Range>(range.clone())
+        .map_err(|e| e.to_string())?;
+
+    format_code(input, config.into(), Some(stylua_range), OutputVerification::None)
+        .map_err(|e| e.to_string())
+}
+
 #[wasm_bindgen(typescript_custom_section)]
 const TS_Config: &'static str = r#"
-import type { Config } from "./lua_fmt_config.d.ts";
-export type { Config, LayoutConfig } from "./lua_fmt_config.d.ts";
+import type { Config, Range } from "./lua_fmt_config.d.ts";
+export type { Config, LayoutConfig, Range } from "./lua_fmt_config.d.ts";
 "#;
 
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(typescript_type = "Config")]
     pub type Config;
+
+    #[wasm_bindgen(typescript_type = "Range")]
+    pub type Range;
 }
 
 #[derive(Deserialize, Clone, Default)]
