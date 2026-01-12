@@ -46,16 +46,16 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build wasm
-        run: ./crates/lua_fmt/scripts/build.sh
+        run: ./scripts/build.sh
 
       - run: npm pack
-        working-directory: crates/lua_fmt/pkg
+        working-directory: pkg
 
       - name: Upload
         uses: actions/upload-artifact@v6
         with:
           name: build
-          path: crates/lua_fmt/pkg
+          path: pkg
 
   node-test:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
       - uses: actions/download-artifact@v7
         with:
           name: build
-          path: crates/lua_fmt/pkg/
+          path: pkg/
 
       - uses: actions/setup-node@v6
         with:
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/download-artifact@v7
         with:
           name: build
-          path: crates/lua_fmt/pkg/
+          path: pkg/
 
       - uses: denoland/setup-deno@v1
         with:
@@ -97,7 +97,7 @@ jobs:
       - uses: actions/download-artifact@v7
         with:
           name: build
-          path: crates/lua_fmt/pkg/
+          path: pkg/
 
       - uses: oven-sh/setup-bun@v2
         name: Install bun

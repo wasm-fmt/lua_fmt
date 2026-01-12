@@ -1,35 +1,43 @@
-[workspace]
-members  = ["crates/*"]
-resolver = "2"
+[package]
+authors     = ["magic-akari <akari.ccino@gmail.com>"]
+description = "A WASM based Lua Formatter"
+edition     = "2021"
+homepage    = "https://github.com/wasm-fmt/lua_fmt"
+keywords    = ["wasm", "stylua", "lua", "formatter"]
+license     = "MIT"
+name        = "lua_fmt"
+readme      = "README.md"
+repository  = "https://github.com/wasm-fmt/lua_fmt"
+version     = "0.2.0"
 
 
-    [workspace.package]
-    authors     = ["magic-akari <akari.ccino@gmail.com>"]
-    description = "A WASM based Lua Formatter"
-    edition     = "2021"
-    homepage    = "https://github.com/wasm-fmt/lua_fmt"
-    keywords    = ["wasm", "stylua", "lua", "formatter"]
-    license     = "MIT"
-    readme      = "README.md"
-    repository  = "https://github.com/wasm-fmt/lua_fmt"
-    version     = "0.2.0"
+	[package.metadata.wasm-pack.profile.release]
+	wasm-opt = ["-Os"]
 
 
-    [workspace.dependencies]
-    serde              = "1.0"
-    serde-wasm-bindgen = "0.6"
-    serde_json         = "1.0"
-    wasm-bindgen       = "0.2.95"
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+serde_json = { version = "1.0", features = ["preserve_order"] }
+stylua = { version = "2.0.0", default-features = false, features = [
+	"lua52",
+	"lua53",
+	"lua54",
+] }
+wasm-bindgen = "0.2"
 
-    stylua = { version = "2.0.0", default-features = false }
 
-[patch.crates-io]
-regex = { path = "crates/regex_patch" }
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 
 [profile.release]
 codegen-units = 1
-debug         = false     # set to `true` for debug information
+debug         = false
 lto           = true
 opt-level     = "s"
-panic         = "abort"   # Let it crash and force ourselves to write safe Rust.
-strip         = "symbols" # set to `false` for debug information
+panic         = "abort"
+strip         = "symbols"
+
+[patch.crates-io]
+regex = { path = "crates/regex_patch" }
