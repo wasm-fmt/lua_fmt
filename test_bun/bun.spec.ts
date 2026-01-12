@@ -12,7 +12,7 @@ for await (const case_name of new Glob("**/*.lua").scan({ cwd: test_root })) {
 	const [input, expected] = await Promise.all([Bun.file(input_path).text(), Bun.file(input_path + ".snap").text()]);
 
 	test(case_name, () => {
-		const actual = format(input, input_path);
+		const actual = format(input);
 		expect(actual).toBe(expected);
 	});
 }

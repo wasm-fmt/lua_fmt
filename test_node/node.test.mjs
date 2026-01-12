@@ -21,7 +21,7 @@ for await (const case_name of glob("**/*.lua", { cwd: test_root })) {
 	const [input, expected] = await Promise.all([readFile(input_path, "utf-8"), readFile(expect_path, "utf-8")]);
 
 	test(case_name, () => {
-		const actual = format(input, input_path);
+		const actual = format(input);
 		assert.equal(actual, expected);
 	});
 }

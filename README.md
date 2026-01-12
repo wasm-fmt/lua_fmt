@@ -23,7 +23,7 @@ import { format } from "@wasm-fmt/lua_fmt";
 
 const input = `print "Hello World"`;
 
-const formatted = format(input, "main.lua");
+const formatted = format(input);
 console.log(formatted);
 ```
 
@@ -38,7 +38,7 @@ await init();
 
 const input = `print "Hello World"`;
 
-const formatted = format(input, "main.lua");
+const formatted = format(input);
 console.log(formatted);
 ```
 

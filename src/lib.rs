@@ -9,11 +9,8 @@ use wasm_bindgen::prelude::wasm_bindgen;
 #[wasm_bindgen]
 pub fn format(
     #[wasm_bindgen(param_description = "Lua code to format")] input: &str,
-    filename: &str,
     #[wasm_bindgen(param_description = "Configuration for formatting")] config: Option<Config>,
 ) -> Result<String, String> {
-    let _ = filename;
-
     let config = config
         .map(|x| serde_wasm_bindgen::from_value::<LuaConfig>(x.clone()))
         .transpose()

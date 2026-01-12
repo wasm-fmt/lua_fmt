@@ -20,7 +20,7 @@ for await (const { path: input_path, name } of expandGlob("**/*.lua", { root: te
 	const [input, expected] = await Promise.all([Deno.readTextFile(input_path), Deno.readTextFile(expect_path)]);
 
 	Deno.test(case_name, () => {
-		const actual = format(input, input_path);
+		const actual = format(input);
 		assertEquals(actual, expected);
 	});
 }
