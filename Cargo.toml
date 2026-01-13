@@ -8,7 +8,7 @@ license     = "MIT"
 name        = "lua_fmt"
 readme      = "README.md"
 repository  = "https://github.com/wasm-fmt/lua_fmt"
-version     = "0.3.0"
+version     = "0.3.1"
 
 
 [dev-dependencies]
