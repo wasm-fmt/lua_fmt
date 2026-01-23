@@ -5,7 +5,7 @@
 		"magic-akari <akari.ccino@gmail.com>"
 	],
 	"description": "A WASM based Lua Formatter",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
