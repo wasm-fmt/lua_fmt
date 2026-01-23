@@ -1,0 +1,22 @@
+{
+	"$schema": "https://jsr.io/schema/config-file.v1.json",
+	"name": "@fmt/lua-fmt",
+	"version": "0.3.1",
+	"exports": {
+		".": "./lua_fmt.js",
+		"./esm": "./lua_fmt_esm.js",
+		"./node": "./lua_fmt_node.js",
+		"./bundler": "./lua_fmt.js",
+		"./web": "./lua_fmt_web.js"
+	},
+	"publish": {
+		"include": [
+			"lua_fmt_*",
+			"lua_fmt.*",
+			"README.md"
+		],
+		"exclude": [
+			"!*"
+		]
+	}
+}

@@ -3,14 +3,18 @@
 	"indentWidth": 4,
 	"lineWidth": 120,
 	"newLineKind": "lf",
-	"json": {},
+	"json": {
+		"trailingCommas": "never"
+	},
 	"markdown": {},
 	"oxc": {},
 	"excludes": [
 		"**/*-lock.json",
 		"**/node_modules",
 		"test_data",
-		"pkg"
+		"pkg",
+		"snapshots",
+		"target"
 	],
 	"plugins": [
 		"https://plugins.dprint.dev/json-0.21.1.wasm",

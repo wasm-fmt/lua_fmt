@@ -1,0 +1,64 @@
+{
+	"name": "@wasm-fmt/lua_fmt",
+	"type": "module",
+	"collaborators": [
+		"magic-akari <akari.ccino@gmail.com>"
+	],
+	"description": "A WASM based Lua Formatter",
+	"version": "0.3.1",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wasm-fmt/lua_fmt"
+	},
+	"homepage": "https://github.com/wasm-fmt/lua_fmt",
+	"types": "lua_fmt.d.ts",
+	"sideEffects": [
+		"./lua_fmt.js",
+		"./lua_fmt_node.js",
+		"./lua_fmt_esm.js"
+	],
+	"keywords": [
+		"wasm",
+		"stylua",
+		"lua",
+		"formatter"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"exports": {
+		".": {
+			"types": "./lua_fmt.d.ts",
+			"webpack": "./lua_fmt.js",
+			"deno": "./lua_fmt.js",
+			"bun": "./lua_fmt_node.js",
+			"module-sync": "./lua_fmt_node.js",
+			"node": "./lua_fmt_node.js",
+			"default": "./lua_fmt_esm.js"
+		},
+		"./esm": {
+			"types": "./lua_fmt.d.ts",
+			"default": "./lua_fmt_esm.js"
+		},
+		"./node": {
+			"types": "./lua_fmt.d.ts",
+			"default": "./lua_fmt_node.js"
+		},
+		"./bundler": {
+			"types": "./lua_fmt.d.ts",
+			"default": "./lua_fmt.js"
+		},
+		"./web": {
+			"types": "./lua_fmt_web.d.ts",
+			"default": "./lua_fmt_web.js"
+		},
+		"./vite": {
+			"types": "./lua_fmt_web.d.ts",
+			"default": "./lua_fmt_vite.js"
+		},
+		"./wasm": "./lua_fmt_bg.wasm",
+		"./package.json": "./package.json",
+		"./*": "./*"
+	}
+}
