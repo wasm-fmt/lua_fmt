@@ -1,7 +1,8 @@
 use serde::Deserialize;
 use stylua_lib::{
-    format_code, CallParenType, CollapseSimpleStatement, Config as StyluaConfig, IndentType,
-    LineEndings, OutputVerification, QuoteStyle, SortRequiresConfig,
+    format_code, BlockNewlineGaps, CallParenType, CollapseSimpleStatement, Config as StyluaConfig,
+    IndentType, LineEndings, OutputVerification, QuoteStyle, SortRequiresConfig,
+    SpaceAfterFunctionNames,
 };
 use wasm_bindgen::prelude::wasm_bindgen;
 
@@ -81,6 +82,12 @@ struct LuaConfig {
     #[serde(alias = "collapseSimpleStatement")]
     collapse_simple_statement: Option<CollapseSimpleStatement>,
 
+    #[serde(alias = "blockNewlineGaps")]
+    block_newline_gaps: Option<BlockNewlineGaps>,
+
+    #[serde(alias = "spaceAfterFunctionNames")]
+    space_after_function_names: Option<SpaceAfterFunctionNames>,
+
     #[serde(alias = "sortRequires")]
     sort_requires: Option<bool>,
 }
@@ -117,6 +124,14 @@ impl From<LuaConfig> for StyluaConfig {
             config.collapse_simple_statement = collapse_simple_statement;
         }
 
+        if let Some(block_newline_gaps) = val.block_newline_gaps {
+            config.block_newline_gaps = block_newline_gaps;
+        }
+
+        if let Some(space_after_function_names) = val.space_after_function_names {
+            config.space_after_function_names = space_after_function_names;
+        }
+
         if let Some(enabled) = val.sort_requires {
             config.sort_requires = SortRequiresConfig { enabled };
         }
@@ -126,7 +141,7 @@ impl From<LuaConfig> for StyluaConfig {
 }
 
 #[derive(Deserialize)]
-#[serde(rename_all = "snake_case")]
+#[serde(rename_all = "lowercase")]
 #[derive(Clone, Copy, Default)]
 enum IndentStyle {
     Tab,
@@ -144,7 +159,7 @@ impl From<IndentStyle> for IndentType {
 }
 
 #[derive(Deserialize)]
-#[serde(rename_all = "snake_case")]
+#[serde(rename_all = "lowercase")]
 #[derive(Clone, Copy, Default)]
 enum LineEnding {
     #[default]

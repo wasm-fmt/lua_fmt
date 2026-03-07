@@ -17,6 +17,10 @@ export interface Config extends LayoutConfig {
 	call_parentheses?: "Always" | "NoSingleString" | "NoSingleTable" | "None" | "Input";
 	/** What mode to use if we want to collapse simple functions / guard statements. "Never" never collapses. "FunctionOnly" collapses simple functions onto a single line. "ConditionalOnly" collapses simple if guards onto a single line. "Always" collapses all simple statements onto a single line. */
 	collapse_simple_statement?: "Never" | "FunctionOnly" | "ConditionalOnly" | "Always";
+	/** Whether we should allow blocks to preserve leading and trailing newline gaps. "Never" never allows leading or trailing newline gaps. "Preserve" preserves both leading and trailing newline gaps if present in input. */
+	block_newline_gaps?: "Never" | "Preserve";
+	/** Whether we should include a space between the function name and arguments. "Never" never uses a space. "Definitions" uses a space only for definitions. "Calls" uses a space only for calls. "Always" uses a space for both definitions and calls. */
+	space_after_function_names?: "Never" | "Definitions" | "Calls" | "Always";
 	/** Whether the sort requires codemod is enabled */
 	sort_requires?: boolean;
 
