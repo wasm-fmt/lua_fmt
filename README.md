@@ -19,12 +19,19 @@ npx jsr add @fmt/lua-fmt
 ## Node.js / Deno / Bun / Bundler
 
 ```javascript
-import { format } from "@wasm-fmt/lua_fmt";
+import { format, formatRanges } from "@wasm-fmt/lua_fmt";
 
 const input = `print "Hello World"`;
 
 const formatted = format(input);
 console.log(formatted);
+
+// Ranges use UTF-8 byte offsets and [start, end) semantics.
+const source = 'local value="名称"\nlocal y=2\n';
+const encoder = new TextEncoder();
+const start = encoder.encode('local value="名称"\n').length;
+const partiallyFormatted = formatRanges(source, [{ start, end: encoder.encode(source).length }]);
+console.log(partiallyFormatted);
 ```
 
 ## Web
@@ -65,6 +72,12 @@ import { format } from "@wasm-fmt/lua_fmt/bundler";
 - `./bundler` - Bundlers like Webpack (no init required)
 - `./web` - Web browsers (requires manual init)
 - `./vite` - Vite bundler (requires manual init)
+
+## Bridge experiment
+
+This branch exposes whole-file and range formatting through the wasm-fmt
+Bridge ABI. StyLua accepts one range per call. An empty range list is
+unchanged, while requests with multiple ranges fail explicitly.
 
 # Credits
 

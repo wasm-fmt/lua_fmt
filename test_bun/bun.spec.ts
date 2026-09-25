@@ -2,7 +2,7 @@
 import { Glob } from "bun";
 import { expect, test } from "bun:test";
 
-import init, { format } from "../pkg/lua_fmt_web.js";
+import init, { format, formatRanges } from "../pkg/lua_fmt_web.js";
 
 await init();
 
@@ -17,3 +17,12 @@ for await (const case_name of new Glob("**/*.lua").scan({ cwd: test_root })) {
 		expect(actual).toBe(expected);
 	});
 }
+
+test("formats one UTF-8 byte range", () => {
+	const source = 'local value="名称"\nlocal y=2\n';
+	const encoder = new TextEncoder();
+	const start = encoder.encode('local value="名称"\n').length;
+	const end = encoder.encode(source).length;
+
+	expect(formatRanges(source, [{ start, end }])).toBe('local value="名称"\nlocal y = 2\n');
+});
