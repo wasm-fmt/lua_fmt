@@ -30,7 +30,7 @@ crate-type = ["cdylib", "rlib"]
 codegen-units = 1
 debug         = false
 lto           = true
-opt-level     = "s"
+opt-level     = 2
 panic         = "abort"
 strip         = "symbols"
 
